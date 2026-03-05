@@ -58,9 +58,13 @@ vision-dashboard-yolo
 
 ### Object Detection Output
 
-![Detection Demo](screenshots/image Detected 1.png)
-![Detection Result](screenshots/image Detected 2.png)
----
+## 📷 Project Demo
+
+### Object Detection Output
+
+![Detection Demo](screenshots/detection1.png)
+
+![Detection Result](screenshots/detection2.png)
 
 ## ⚙️ Installation
 
