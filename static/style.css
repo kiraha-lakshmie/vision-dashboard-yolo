@@ -1,0 +1,18 @@
+import os
+import time
+import cv2
+
+# Make sure static folder exists
+if not os.path.exists("static"):
+    os.makedirs("static")
+
+# Create unique filename using timestamp
+filename = f"template_{int(time.time())}.jpg"
+
+# Create full save path
+save_path = os.path.join("static", filename)
+
+# Save image
+cv2.imwrite(save_path, frame)
+
+print("Image saved successfully at:", save_path)

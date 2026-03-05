@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vision Dashboard</title>
+</head>
+<body>
+    <h1>Vision Dashboard</h1>
+
+    <img src="/video" width="640">
+
+    <br><br>
+
+    <input type="text" id="pattern" placeholder="Enter object name">
+    <button onclick="checkPattern()">Check Pattern</button>
+    <button onclick="captureImage()">Capture Image</button>
+
+    <p id="result"></p>
+
+<script>
+function checkPattern() {
+    let pattern = document.getElementById("pattern").value;
+
+    fetch('/detect', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({pattern: pattern})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.match) {
+            document.getElementById("result").innerText = "Object Detected!";
+        } else {
+            document.getElementById("result").innerText = "Not Found!";
+        }
+    });
+}
+
+function captureImage() {
+    fetch('/capture', {method: 'POST'})
+    .then(res => res.json())
+    .then(data => {
+        if (data.saved) {
+            alert("Image Saved!");
+        }
+    });
+}
+</script>
+
+</body>
+</html>
